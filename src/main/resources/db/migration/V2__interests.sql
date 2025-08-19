@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS interests (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 기본 관심사 시드
+INSERT IGNORE INTO interests (name) VALUES
+  ('fashion'), ('beauty'), ('travel'), ('fitness'), ('food');

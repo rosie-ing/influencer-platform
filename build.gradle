@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.4'
 	id 'io.spring.dependency-management' version '1.1.7'
+
+	id 'org.flywaydb.flyway' version '10.17.0'
 }
 
 group = 'com.example'
@@ -31,17 +33,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+
 	//Dev
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	//DB Driver (MySQL 9.x 권장)
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'com.mysql:mysql-connector-j:8.4.0'
 
 	//OpenAPI (Swagger UI)
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
 
 	//Flyway
-	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-core:10.17.0'
+	implementation 'org.flywaydb:flyway-mysql:10.17.0'
 
 	//Lombok
 	compileOnly 'org.projectlombok:lombok'
@@ -56,8 +60,16 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'com.h2database:h2:2.2.224'
 }
 
+flyway {
+	url = 'jdbc:mysql://localhost:3306/mydb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8'
+	user = 'admin'
+	password = '1111'
+	locations = ['filesystem:src/main/resources/db/migration']
+
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }

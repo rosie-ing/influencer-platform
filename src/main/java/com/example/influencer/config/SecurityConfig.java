@@ -15,9 +15,13 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                ".swagger-ui/**", "v3/api-docs/**",
-                                "/health", "/actuator/health",
-                                "auth/**" //회원가입 로그인 시 사용
+                                "/",
+                                "/ping",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/health",
+                                "/actuator/health",
+                                "/auth/**"//회원가입 로그인 시 사용
                         ).permitAll()
                         .anyRequest().permitAll() //개발 초반 전체 오픈
                         //.anyRequest().authenticated() + 필터추가

@@ -10,7 +10,7 @@ public enum ErrorCode {
     FORBIDDEN(HttpStatus.FORBIDDEN, "FORBIDDEN"),
     NOT_FOUND(HttpStatus.NOT_FOUND, "NOT_FOUND"),
     CONFLICT(HttpStatus.CONFLICT, "CONFLICT"),
-    INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAR_SERVER_ERROR");
+    INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_SERVER_ERROR");
 
     private final HttpStatus status;
     private final String code;

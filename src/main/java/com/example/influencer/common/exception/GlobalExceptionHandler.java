@@ -35,9 +35,9 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse<Void>> handleEtc(Exception ex){
-        return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ApiResponse.error(ErrorCode.INTERNAL_ERROR.getCode(), "Unexpected error"));
+    public ResponseEntity<ApiResponse<Void>> handleEtc(Exception ex) {
+        ex.printStackTrace(); // 콘솔에 스택 출력
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ApiResponse.error("INTERNAL_SERVER_ERROR", "Unexpected error"));
     }
 }
