@@ -27,10 +27,33 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace
 
+devtools:
+  livereload:
+    enabled: true
+  restart:
+    enabled: true
+  thymeleaf:
+    cache: false
+
 
 server:
   port: 8080
 
 jwt:
   secret: "change-this-to-a-very-long-random-secret-string"
+  issuer: "influencer-app"
   access-token-validity-seconds : 3600
+  refresh-token-validity-days: 14   # 기본 14일, 필요 시 바꿔도 됨
+
+spring.mvc.throw-exception-if-no-handler-found: true
+spring.web.resources.add-mappings: false
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    path: /v3/api-docs
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+

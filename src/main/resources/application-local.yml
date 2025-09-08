@@ -8,3 +8,9 @@ spring:
       include-message: always
       include-binding-errors: always
       include-stacktrace: always
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
